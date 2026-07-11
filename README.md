@@ -10,7 +10,7 @@
 
 # 📖 Summary
 
-MedAI Assist is an AI-powered clinical decision support system that helps healthcare professionals assess patient symptoms, estimate the most likely diseases, and recommend appropriate medical tests. The system is designed to assist doctors—not replace them—by providing fast, explainable, and evidence-based suggestions.
+MedAI Assist is an explainable AI prototype for clinical decision support. It demonstrates how machine learning can assist healthcare professionals by predicting possible conditions from symptoms while providing transparent explanations and recommended next steps.
 
 ---
 
