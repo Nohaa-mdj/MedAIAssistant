@@ -208,7 +208,8 @@ Future Explainability Layer
 
 # 🤝 Acknowledgments
 
-This project was created as part of the Building AI course by Reaktor and the University of Helsinki.
+This project was created as part of the **Building AI course by Reaktor and the University of Helsinki**.
+
 Resources and inspiration:
 
 - Scikit-Learn
@@ -234,7 +235,7 @@ python3 -m streamlit run app/streamlit_app.py
 
 # 📄 License
 
-MIT License # MedAIAssistant
+MIT License
 
 ```
 
