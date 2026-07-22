@@ -1,12 +1,20 @@
 import joblib
 import pandas as pd
+from pathlib import Path
+
+
+# Chemin racine du projet
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+MODEL_PATH = BASE_DIR / "models" / "medai_model.pkl"
+DATA_PATH = BASE_DIR / "data" / "Training.csv"
 
 
 # Charger le modèle entraîné
-model = joblib.load("models/medai_model.pkl")
+model = joblib.load(MODEL_PATH)
 
 # Charger les noms des symptômes
-data = pd.read_csv("data/Training.csv")
+data = pd.read_csv(DATA_PATH)
 
 # Supprimer la colonne vide si elle existe
 if "Unnamed: 133" in data.columns:
