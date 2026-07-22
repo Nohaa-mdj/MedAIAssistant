@@ -8,7 +8,7 @@
 
 ---
 
-# 📖 Summary
+## 📖 Summary
 
 MedAI Assist is an explainable AI prototype for clinical decision support.
 
