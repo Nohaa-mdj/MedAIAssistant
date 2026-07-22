@@ -1,180 +1,165 @@
 # 🩺 MedAI Assist
 
-> Building AI course project
+> An explainable machine learning prototype for healthcare decision support
 
-![Python](https://img.shields.io/badge/Python-3.12-blue)
-![AI](https://img.shields.io/badge/Artificial%20Intelligence-Machine%20Learning-success)
+![Python](https://img.shields.io/badge/Python-3.14-blue)
+![Machine Learning](https://img.shields.io/badge/AI-Machine%20Learning-success)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
 
 # 📖 Summary
 
-MedAI Assist is an explainable AI prototype for clinical decision support. It demonstrates how machine learning can assist healthcare professionals by predicting possible conditions from symptoms while providing transparent explanations and recommended next steps.
+MedAI Assist is an explainable AI prototype for clinical decision support.
+
+The project demonstrates how machine learning can assist healthcare professionals by analyzing symptom patterns and predicting possible medical conditions.
+
+The goal is not to replace medical expertise, but to explore how AI systems can support decision-making through data-driven recommendations.
 
 ---
 
 # 🌍 Background
 
-Healthcare professionals often face hundreds of patient cases every week.
+Healthcare professionals process a large amount of information when evaluating patients.
 
-Making fast and accurate decisions can be difficult, especially in emergency situations or in regions with limited medical resources.
+AI-assisted tools could help organize medical data and highlight possible conditions, especially in situations where rapid analysis is required.
 
 Common challenges include:
 
-- delayed diagnosis
-- rare diseases
 - information overload
-- human fatigue
-- unequal access to specialists
+- limited time for decision-making
+- complex symptom combinations
+- unequal access to medical expertise
 
-MedAI Assist aims to reduce diagnostic errors by providing AI-assisted recommendations based on patient data.
+MedAI Assist explores how machine learning can contribute to healthcare applications while considering important ethical aspects such as transparency, fairness and human supervision.
 
-My motivation is to explore practical AI applications that can improve healthcare and support medical professionals in making informed decisions. This project also helped me deepen my understanding of machine learning and AI ethics through the Building AI course.
+This project was developed as part of the **Building AI course by Reaktor and the University of Helsinki**.
 
 ---
 
 # 🚀 How is it used?
 
-A healthcare professional enters:
+Users select symptoms through an interactive Streamlit interface.
 
-- Patient age
-- Gender
-- Symptoms
-- Temperature
-- Blood pressure
-- Heart rate
-- Medical history
+The system then:
 
-The AI then:
+1. Converts symptoms into numerical features
+2. Processes the input data
+3. Applies a trained machine learning model
+4. Predicts a possible condition
 
-1. Cleans the data
-2. Identifies patterns
-3. Predicts possible diseases
-4. Displays confidence scores
-5. Suggests medical tests
-6. Explains why each prediction was made
+Example:
 
-Example
-
-Patient:
-
-Age: 46
-
-Symptoms:
+Selected symptoms:
 
 - Fever
 - Cough
 - Chest pain
 - Shortness of breath
 
-Prediction:
+Prediction example:
 
-| Disease | Probability |
-|----------|------------|
-| Pneumonia | 87% |
-| COVID-19 | 11% |
-| Influenza | 2% |
+| Condition                   | Confidence |
+| --------------------------- | ---------- |
+| Pneumonia                   | 87%        |
+| Influenza                   | 8%         |
+| Other respiratory condition | 5%         |
 
-Suggested exams:
-
-- Chest X-Ray
-- Blood Test
-- Oxygen Saturation
+> This output is an AI prediction and not a medical diagnosis.
 
 ---
 
 # 🤖 AI Methods
 
-The project combines several AI techniques.
+## Machine Learning
 
-### Machine Learning
+The current prototype uses:
 
-- Random Forest
-- XGBoost
-- Logistic Regression
+- Random Forest Classifier
+- Scikit-Learn
 
-### Natural Language Processing
+The model was trained on a labeled symptom dataset to identify patterns between symptoms and possible conditions.
 
-Used to understand symptom descriptions.
+## Explainability
 
-Example:
+Explainability is an important goal of this project.
 
-"I've had chest pain and a fever for three days."
+Future improvements could include:
 
-↓
+- SHAP explanations
+- feature importance visualization
+- model confidence analysis
 
-Extracted symptoms:
-
-- chest pain
-- fever
-- duration
-
-### Explainable AI
-
-SHAP values help doctors understand why the model made a prediction.
+These techniques would help users better understand how predictions are generated.
 
 ---
 
-# 📊 Data Sources
+# 📊 Dataset
 
-Possible datasets include:
+The prototype uses a medical symptom dataset containing:
+
+- symptom features
+- disease labels
+- training and testing samples
+
+The dataset does not contain personal patient information.
+
+Future versions could explore validated medical datasets such as:
 
 - MIMIC-IV
-- Kaggle Medical Symptom Dataset
-- WHO public health datasets
 - UCI Machine Learning Repository
-
-No personal patient data would be stored.
+- public healthcare datasets
 
 ---
 
-# 👥 Users
+# 👥 Target Users
 
-Primary users:
+Potential users:
 
-- Doctors
-- Nurses
+- Healthcare professionals
 - Medical students
+- Researchers
 
-Secondary users:
+Possible future environments:
 
-- Hospitals
-- Clinics
-- Universities
+- hospitals
+- clinics
+- educational platforms
 
 ---
 
-# ⚠ Challenges
+# ⚠ Limitations & Ethics
 
-This system is **not** intended to diagnose patients independently.
+MedAI Assist is a research and educational prototype.
 
-Limitations include:
+It is **not designed to diagnose patients or replace healthcare professionals**.
 
-- dataset bias
+Current limitations include:
+
+- dataset quality and bias
+- limited clinical context
 - incomplete patient information
-- rare diseases
-- changing medical knowledge
+- lack of real-world validation
 
-Ethical considerations:
+Important considerations:
 
 - patient privacy
 - transparency
 - fairness
-- human oversight
+- human decision-making
 
 ---
 
-# 🔮 Future Work
+# 🔮 Future Improvements
 
-Future versions could include:
+Possible future developments:
 
-- Medical image analysis (X-rays, CT scans)
-- Voice-based symptom input
-- Wearable device integration
-- Multi-language support
-- Telemedicine integration
-- Large Language Models for medical reasoning
+- SHAP-based explanations
+- Natural Language Processing for symptom extraction
+- Medical image analysis
+- Multilingual support
+- Integration with healthcare systems
+- Large Language Models for medical assistance
 
 ---
 
@@ -182,7 +167,11 @@ Future versions could include:
 
 ```
 
-Patient
+User
+
+↓
+
+Streamlit Interface
 
 ↓
 
@@ -194,15 +183,11 @@ Machine Learning Model
 
 ↓
 
-Prediction Engine
+Prediction Output
 
 ↓
 
-Explainable AI
-
-↓
-
-Doctor Dashboard
+Future Explainability Layer
 
 ```
 
@@ -210,42 +195,47 @@ Doctor Dashboard
 
 # 🛠 Technologies
 
-| Component | Technology |
-|------------|-----------|
-| Language | Python |
-| ML | Scikit-Learn |
-| Deep Learning | TensorFlow |
-| NLP | spaCy |
-| Visualization | Plotly |
-| API | FastAPI |
-| Database | PostgreSQL |
-
----
-
-# 📈 Possible Improvements
-
-- Real-time hospital integration
-- Continuous model retraining
-- Federated Learning
-- Mobile application
-- Electronic Health Record integration
+| Component            | Technology       |
+| -------------------- | ---------------- |
+| Programming Language | Python           |
+| Machine Learning     | Scikit-Learn     |
+| Interface            | Streamlit        |
+| Data Processing      | Pandas           |
+| Model Serialization  | Joblib           |
+| Data Analysis        | Jupyter Notebook |
 
 ---
 
 # 🤝 Acknowledgments
 
-This project was created as part of the **Building AI course** by Reaktor and the University of Helsinki.
+This project was created as part of the Building AI course by Reaktor and the University of Helsinki.
+Resources and inspiration:
 
-Inspirations:
-
-- World Health Organization
-- MIMIC-IV Dataset
-- UCI Machine Learning Repository
 - Scikit-Learn
-- TensorFlow
+- Kaggle datasets
+- UCI Machine Learning Repository
+- World Health Organization resources
+
+# ⚙ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Nohaa-mdj/MedAIAssistant.git
+
+cd MedAIAssistant
+
+pip install -r requirements.txt
+
+python3 -m streamlit run app/streamlit_app.py
+```
 
 ---
 
 # 📄 License
 
 MIT License # MedAIAssistant
+
+```
+
+```
