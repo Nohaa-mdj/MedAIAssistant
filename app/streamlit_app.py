@@ -1,19 +1,6 @@
 import streamlit as st
-import joblib
-import pandas as pd
 
-
-# Load trained model
-model = joblib.load("models/medai_model.pkl")
-
-
-# Load symptoms names
-data = pd.read_csv("data/Training.csv")
-
-if "Unnamed: 133" in data.columns:
-    data = data.drop(columns=["Unnamed: 133"])
-
-symptoms = data.drop("prognosis", axis=1).columns
+from src.predict import predict_disease, symptom_columns
 
 
 # Page configuration
@@ -22,7 +9,6 @@ st.set_page_config(
     page_icon="🩺"
 )
 
-
 st.title("🩺 MedAI Assist")
 
 st.write(
@@ -30,32 +16,30 @@ st.write(
     "This tool does not replace medical professionals."
 )
 
-
 st.header("Select symptoms")
-
 
 # Create symptom checkboxes
 patient_data = {}
 
-for symptom in symptoms:
-    patient_data[symptom] = st.checkbox(symptom)
-
+for symptom in symptom_columns:
+    patient_data[symptom] = st.checkbox(
+        symptom.replace("_", " ").title()
+    )
 
 # Prediction button
 if st.button("Predict"):
 
-    # Convert symptoms to numbers
-    input_data = pd.DataFrame(
-        [patient_data]
-    )
+    selected_symptoms = [
+        symptom
+        for symptom, selected in patient_data.items()
+        if selected
+    ]
 
-    # Convert True/False to 1/0
-    input_data = input_data.astype(int)
+    prediction, results = predict_disease(selected_symptoms)
 
+    st.success(f"Predicted condition: {prediction}")
 
-    prediction = model.predict(input_data)
+    st.subheader("Top 3 predictions")
 
-
-    st.success(
-        f"Predicted condition: {prediction[0]}"
-    )
+    for disease, probability in results:
+        st.write(f"**{disease}** — {probability:.1%}")
